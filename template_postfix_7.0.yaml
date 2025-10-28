@@ -1,0 +1,174 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    - uuid: ec36e095f0a44d73978388ff62540b66
+      template: 'Template Postfix Services'
+      name: 'Template Postfix Services'
+      description: 'Template for postfix services monitoration'
+      groups:
+        - name: Templates
+      items:
+        - uuid: 996015815df64b6ca43446c365dc623e
+          name: 'Postfix bounced'
+          type: TRAP
+          key: pf.bounced
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 08abe4af62cf4dfdb35c96b93fca1ab7
+          name: 'Postfix bytes delivered'
+          type: TRAP
+          key: pf.bytesdelivered
+          delay: '0'
+          units: B
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 13ab2f855395419cbf2b52da87e10191
+          name: 'Postfix bytes received'
+          type: TRAP
+          key: pf.bytesreceived
+          delay: '0'
+          units: B
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: d7b7fd540eb44c5ab72ac3b65f2cbd66
+          name: 'Postfix deferred'
+          type: TRAP
+          key: pf.deferred
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 92adf39a89bc4141a882e2869eb8b0bc
+          name: 'Postfix delivered'
+          type: TRAP
+          key: pf.delivered
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 975a9403604644fc9b306f250068fa58
+          name: 'Postfix discarded'
+          type: TRAP
+          key: pf.discarded
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 69754dbe8716416cbb4faeae31039a4e
+          name: 'Postfix forwarded'
+          type: TRAP
+          key: pf.forwarded
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 169475ced21247889f3bf335fdd1d0b4
+          name: 'Postfix held'
+          type: TRAP
+          key: pf.held
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 1cf62860bed042dbbc3233f4611dc62b
+          name: 'Postfix queue'
+          key: pf.mailq
+          delay: '60'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 45ec5e8a6f454927baaf58ee9e9cc83a
+          name: 'Postfix received'
+          type: TRAP
+          key: pf.received
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: 7864faa624a74e9bbb0b856058356a93
+          name: 'Postfix rejected'
+          type: TRAP
+          key: pf.rejected
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+        - uuid: a9acf04efac64fd0adf7893698906cf2
+          name: 'Postfix reject warnings'
+          type: TRAP
+          key: pf.rejectwarnings
+          delay: '0'
+          tags:
+            - tag: Application
+              value: Postfix
+  graphs:
+    - uuid: 57d837b3426d4e8c9540591e2413c2a9
+      name: 'Postfix queue'
+      width: '500'
+      graph_items:
+        - color: 00C800
+          item:
+            host: 'Template Postfix Services'
+            key: pf.mailq
+    - uuid: eda9d67b176841ffaa8d2dac14183271
+      name: 'Postfix statistics'
+      width: '500'
+      graph_items:
+        - color: 00C800
+          item:
+            host: 'Template Postfix Services'
+            key: pf.bounced
+        - sortorder: '1'
+          color: C80000
+          item:
+            host: 'Template Postfix Services'
+            key: pf.deferred
+        - sortorder: '2'
+          color: 0000C8
+          item:
+            host: 'Template Postfix Services'
+            key: pf.delivered
+        - sortorder: '3'
+          color: C800C8
+          item:
+            host: 'Template Postfix Services'
+            key: pf.discarded
+        - sortorder: '4'
+          color: 00C8C8
+          item:
+            host: 'Template Postfix Services'
+            key: pf.forwarded
+        - sortorder: '5'
+          color: C8C800
+          item:
+            host: 'Template Postfix Services'
+            key: pf.held
+        - sortorder: '6'
+          color: C8C8C8
+          item:
+            host: 'Template Postfix Services'
+            key: pf.received
+        - sortorder: '7'
+          item:
+            host: 'Template Postfix Services'
+            key: pf.rejected
+    - uuid: a28c26984bec4bea8b1aa48aad9a9781
+      name: 'Postfix traffic statistics'
+      width: '500'
+      graph_items:
+        - color: 00C800
+          item:
+            host: 'Template Postfix Services'
+            key: pf.bytesdelivered
+        - sortorder: '1'
+          color: 0000EE
+          item:
+            host: 'Template Postfix Services'
+            key: pf.bytesreceived
